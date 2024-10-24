@@ -4,10 +4,8 @@ import demoqa.core.BasePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 public class PracticeFormPage extends BasePage {
-
     public PracticeFormPage(WebDriver driver) {
         super(driver);
     }
@@ -22,6 +20,7 @@ public class PracticeFormPage extends BasePage {
     WebElement userNumber;
 
     public PracticeFormPage enterPersonalData(String name, String surName, String email, String number) {
+        //firstName.sendKeys(name);
         type(firstName, name);
         type(lastName, surName);
         type(userEmail, email);
@@ -29,6 +28,9 @@ public class PracticeFormPage extends BasePage {
         return this;
     }
 
+    //    //label[contains(text(),'Other')]
+    //    //label[contains(text(),'Male')]
+    //    //label[contains(text(),'Female')]
     public PracticeFormPage selectGender(String gender) {
         try {
             String xpathGender = "//label[contains(text(),'" + gender + "')]";
@@ -51,21 +53,14 @@ public class PracticeFormPage extends BasePage {
     @FindBy(css = ".react-datepicker__year-select")
     WebElement yearSelect;
 
-    // Метод для выбора даты через селекты
     public PracticeFormPage chooseDate(String day, String month, String year) {
         click(dateOfBirthInput);
         new Select(monthSelect).selectByVisibleText(month);
         new Select(yearSelect).selectByVisibleText(year);
+//div[@class='react-datepicker__week']//div[.='4']
         driver.findElement(By.xpath("//div[@class='react-datepicker__week']//div[.='" + day + "']")).click();
         return this;
     }
-
-//    // Метод для выбора даты через прямой ввод строки
-//    public PracticeFormPage chooseDateAsString(String s) {
-//        type(dateOfBirthInput, s);
-//        dateOfBirthInput.sendKeys(Keys.TAB);  // Потеря фокуса
-//        return this;
-//    }
 
     @FindBy(id = "subjectsInput")
     WebElement subjectsInput;
@@ -80,6 +75,7 @@ public class PracticeFormPage extends BasePage {
         return this;
     }
 
+    //label[.='Reading']
     public PracticeFormPage chooseHobbies(String[] hobbies) {
         for (String hobby : hobbies) {
             try {
@@ -123,7 +119,6 @@ public class PracticeFormPage extends BasePage {
 
     @FindBy(id = "city")
     WebElement cityContainer;
-
     @FindBy(id = "react-select-4-input")
     WebElement cityInput;
 
@@ -132,7 +127,6 @@ public class PracticeFormPage extends BasePage {
         cityInput.sendKeys(city);
         cityInput.sendKeys(Keys.ENTER);
         return this;
-
     }
 
     @FindBy(id = "submit")
@@ -144,57 +138,24 @@ public class PracticeFormPage extends BasePage {
     }
 
     @FindBy(id = "example-modal-sizes-title-lg")
-    WebElement successMessage;
+    WebElement registrationModal;
 
-    public void verifySussecsRegistration(String text) {
-        shouldHaveText(successMessage, text, 5000);
+    public PracticeFormPage verifySuccessRegistration(String text) {
+        shouldHaveText(registrationModal, text, 5000);
+        return this;
     }
 
     public PracticeFormPage chooseDateAsString(String date) {
         click(dateOfBirthInput);
-        dateOfBirthInput.sendKeys(Keys.CONTROL, "a");
+        String os = System.getProperty("os.name");
+        //type(dateOfBirthInput,date);
+        if(os.contains("Mac")){
+            dateOfBirthInput.sendKeys(Keys.COMMAND, "a");
+        } else {
+            dateOfBirthInput.sendKeys(Keys.CONTROL, "a");
+        }
         dateOfBirthInput.sendKeys(date);
         dateOfBirthInput.sendKeys(Keys.ENTER);
-
-       // type(dateOfBirthInput, date);
-
         return this;
     }
 }
-
-//    @FindBy(id = "city")
-//    WebElement cityContainer;
-//
-//    @FindBy(id = "react-select-4-input")
-//    WebElement cityInput;
-//
-//    // Метод для выбора города
-//    public PracticeFormPage enterCity(String city) {
-//        click(cityContainer);
-//        cityInput.sendKeys(city);
-//        cityInput.sendKeys(Keys.ENTER);
-//        return this;
-//    }
-//
-//    @FindBy(id = "submit")
-//    WebElement submitButton;
-//
-//    // Метод для отправки формы
-//    public PracticeFormPage submitForm() {
-//        click(submitButton);
-//        return this;
-//    }
-//
-//    @FindBy(id = "example-modal-sizes-title-lg")
-//    WebElement successMessage;
-//
-//    // Метод для верификации успешной регистрации
-//    public PracticeFormPage verifySussecsRegistration(String expectedMessage) {
-//        String actualMessage = successMessage.getText();
-//        if (!actualMessage.equals(expectedMessage)) {
-//            throw new AssertionError("Expected: " + expectedMessage + ", but got: " + actualMessage);
-//        }
-//        return this;
-//    }
-
-

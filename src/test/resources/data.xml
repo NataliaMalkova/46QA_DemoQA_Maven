@@ -4,12 +4,11 @@
     <test name="data">
         <classes>
             <class name="demoqa.forms.PracticeFormTests">
-                <parameter name = "firstName" value="Natalia"/>
-                <parameter name = "lastName" value="Malkova"/>
-                <parameter name = "email" value="11@gmail.com"/>
-                <parameter name = "phone" value="1234567890"/>
+                <parameter name="firstName" value="Beth"/>
+                <parameter name="lastName" value="Gibbons"/>
+                <parameter name="email" value="portishead@gmail.com"/>
+                <parameter name="phone" value="1234567890"/>
             </class>
         </classes>
     </test>
 </suite>
-

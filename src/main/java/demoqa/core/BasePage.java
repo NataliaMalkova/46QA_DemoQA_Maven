@@ -11,6 +11,10 @@ import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 
 public class BasePage {
@@ -47,7 +51,7 @@ public class BasePage {
         }
     }
 
-    public void typeScrollWithJS(WebElement element, String text, int y) {
+    protected void typeScrollWithJS(WebElement element, String text, int y) {
         if (text != null) {
             clickWitJS(element, 0, y);
             element.clear();
@@ -55,7 +59,7 @@ public class BasePage {
         }
     }
 
-    public void clickWitJS(WebElement element, int x, int y) {
+    protected void clickWitJS(WebElement element, int x, int y) {
         // js.executeScript("window.scrollBy(100,200)");
         // x - сколько пикселей прокрутить по горизонтали
         // y - сколько пикселей прокрутить по вертикали
@@ -69,13 +73,13 @@ public class BasePage {
         js.executeScript("window.scrollBy(" + 0 + "," + y + ")");
     }
 
-    protected void scrollTWithPageDown(int times) {
-        try{
+    protected void scrollWithPageDown(int count, int delay){
+        try {
             Robot robot = new Robot();
-            for(int i = 0; i < times; i++) {
+            for(int i = 0; i < count; i++){
                 robot.keyPress(KeyEvent.VK_PAGE_DOWN);
                 robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
-                robot.delay(100);
+                robot.delay(delay);
             }
         } catch (AWTException e) {
             throw new RuntimeException(e);
@@ -97,6 +101,35 @@ public class BasePage {
                     "Expected text: [" + text + "], actual text: [" + element.getText() + "] in element: [" + element + "]");
         } catch (TimeoutException e) {
             //throw new TimeoutException(e);
+        }
+    }
+
+    public void verifyLink(String urlToCheck) {
+        try {
+            URL url = new URL(urlToCheck);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setConnectTimeout(3000);
+            connection.connect();
+
+            // Получение кода ответа
+            int responseCode = connection.getResponseCode();
+            // Получение заголовка ответа
+            String responseMessage = connection.getResponseMessage();
+
+            if (responseCode >= 400) {
+                // broken link
+                System.err.println("URL to check: [" + urlToCheck + "], " + "response code: [" + responseCode + "], " + "response message: [" + responseMessage + "] is broken link");
+            } else  {
+                // correct link
+                System.out.println("URL to check: [" + urlToCheck + "], " + "response code: [" + responseCode + "], " + "response message: [" + responseMessage + "] is valid link");
+            }
+
+        } catch (MalformedURLException error) {
+            System.err.println("Error: Malformed URL: ["+urlToCheck+"], error message: [" + error.getMessage()+"]");
+                    //throw new RuntimeException(e);
+        } catch (IOException error) {
+            System.err.println("Error occurred: ["+error.getMessage()+"] for URL: [" + urlToCheck +"]");
+            //throw new RuntimeException(e);
         }
     }
 }

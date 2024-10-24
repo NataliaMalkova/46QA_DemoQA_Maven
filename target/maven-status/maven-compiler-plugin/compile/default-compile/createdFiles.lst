@@ -1,4 +1,5 @@
 demoqa\pages\ButtonsPage.class
+demoqa\pages\RegistrationPage.class
 demoqa\pages\WidgetsPage.class
 demoqa\pages\ButtonPage.class
 demoqa\core\ApplicationManager.class

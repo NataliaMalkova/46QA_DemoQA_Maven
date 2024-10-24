@@ -8,14 +8,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class BrokenLinksImagesTests extends TestBase {
+
     @BeforeMethod
     public void precondition() {
         new HomePage(app.driver).getElements().hideAds();
         new SidePage(app.driver).selectBrokenLinksImages().hideAds();
     }
+
     @Test
-    public void brokenLinksImagesTest(){
+    public void BrokenLinksImagesTest(){
         new BrokenLinksImagesPage(app.driver)
-                .selectBrokenLinksImages();
+                .checkBrokenLinksImages()
+        ;
     }
 }

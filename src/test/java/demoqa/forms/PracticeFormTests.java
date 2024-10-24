@@ -17,40 +17,40 @@ public class PracticeFormTests extends TestBase {
     }
 
     @Test
-    public void practiceFormTest() {
+    public void practiceFormTest(){
         new PracticeFormPage(app.driver)
-                .enterPersonalData("Natalia", "Malkova", "11@gmail.com", "1234567890")
-                .selectGender("Female")
-               .chooseDateAsString("04 May 1965")
-                //.chooseDate("11", "May", "2000")
-                .enterSubject(new String[]{"Maths", "English"})
-                .chooseHobbies(new String[]{"Sports", "Music"})
-                .uploadPicture("C:/Users/Ich/Desktop/sunrise.jpg")
-                .enterCurrentAddress("Berlin, Germany")
-                .enterState("NCR")
-         .enterCity("Delhi")
-         .submitForm()
-        .verifySussecsRegistration("Thanks for submitting the form");
-
-    }
-//.enterPersonalData("Natalia", "Malkova", "11@gmail.com", "1234567890")
-    @Test
-    @Parameters({"firstName", "lastName", "email", "phone"})
-    public void practiceFormParameterTest(String firstName, String lastName, String email, String phone) {
-        new PracticeFormPage(app.driver)
-                .enterPersonalData(firstName, lastName, email, phone)
+                .enterPersonalData(
+                        "Beth","Gibbons","portishead@gmail.com", "1234567890")
                 .selectGender("Female")
                 .chooseDateAsString("04 May 1965")
-                //.chooseDate("11", "May", "2000")
+              //.chooseDate("4","May","1965")
                 .enterSubject(new String[]{"Maths", "English"})
                 .chooseHobbies(new String[]{"Sports", "Music"})
-                .uploadPicture("C:/Users/Ich/Desktop/sunrise.jpg")
-                .enterCurrentAddress("Berlin, Germany")
+                .uploadPicture("C:/Users/PORTISHEAD/Downloads/portishead/beth.jpeg")
+                .enterCurrentAddress("Portishead, Bristol, UK")
                 .enterState("NCR")
                 .enterCity("Delhi")
                 .submitForm()
-                .verifySussecsRegistration("Thanks for submitting the form");
+                .verifySuccessRegistration("Thanks for submitting the form")
+                ;
+    }
 
+    @Test
+    @Parameters({"firstName","lastName", "email", "phone"})
+    public void practiceFormParametersTest(String firstName, String lastName, String email, String phone){
+        new PracticeFormPage(app.driver)
+                .enterPersonalData(firstName,lastName,email, phone)
+                .selectGender("Female")
+                .chooseDateAsString("04 May 1965")
+                //.chooseDate("4","May","1965")
+                .enterSubject(new String[]{"Maths", "English"})
+                .chooseHobbies(new String[]{"Sports", "Music"})
+                .uploadPicture("C:/Users/PORTISHEAD/Downloads/portishead/beth.jpeg")
+                .enterCurrentAddress("Portishead, Bristol, UK")
+                .enterState("NCR")
+                .enterCity("Delhi")
+                .submitForm()
+                .verifySuccessRegistration("Thanks for submitting the form")
+        ;
     }
 }
-

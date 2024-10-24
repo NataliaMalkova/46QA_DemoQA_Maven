@@ -2,23 +2,27 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-23T12:46:38 CEST" name="login" finished-at="2024-10-23T12:47:03 CEST" duration-ms="25852">
+  <suite started-at="2024-10-24T11:20:37 CEST" name="login" finished-at="2024-10-24T11:21:34 CEST" duration-ms="56363">
     <groups>
     </groups>
-    <test started-at="2024-10-23T12:46:38 CEST" name="login" finished-at="2024-10-23T12:47:03 CEST" duration-ms="25852">
+    <test started-at="2024-10-24T11:20:37 CEST" name="login" finished-at="2024-10-24T11:21:34 CEST" duration-ms="56363">
       <class name="demoqa.book_store.LoginTests">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:demoqa.book_store.LoginTests@67080771]" started-at="2024-10-23T12:46:38 CEST" name="setUp" finished-at="2024-10-23T12:46:56 CEST" duration-ms="18589" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:demoqa.book_store.LoginTests@693fe6c9]" started-at="2024-10-24T11:20:37 CEST" name="setUp" finished-at="2024-10-24T11:21:19 CEST" duration-ms="42180" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="precondition()[pri:0, instance:demoqa.book_store.LoginTests@67080771]" started-at="2024-10-23T12:46:56 CEST" name="precondition" finished-at="2024-10-23T12:47:01 CEST" duration-ms="4568" status="PASS">
+        <test-method is-config="true" signature="precondition()[pri:0, instance:demoqa.book_store.LoginTests@693fe6c9]" started-at="2024-10-24T11:21:19 CEST" name="precondition" finished-at="2024-10-24T11:21:21 CEST" duration-ms="1913" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- precondition -->
-        <test-method signature="loginPositiveTest()[pri:0, instance:demoqa.book_store.LoginTests@67080771]" started-at="2024-10-23T12:47:01 CEST" name="loginPositiveTest" finished-at="2024-10-23T12:47:03 CEST" duration-ms="2482" status="PASS">
+        <test-method signature="loginPositiveTest()[pri:0, instance:demoqa.book_store.LoginTests@693fe6c9]" started-at="2024-10-24T11:21:21 CEST" name="loginPositiveTest" finished-at="2024-10-24T11:21:25 CEST" duration-ms="3844" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginPositiveTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:demoqa.book_store.LoginTests@693fe6c9]" started-at="2024-10-24T11:21:25 CEST" name="tearDown" finished-at="2024-10-24T11:21:33 CEST" duration-ms="8240" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
       </class> <!-- demoqa.book_store.LoginTests -->
     </test> <!-- login -->
   </suite> <!-- login -->

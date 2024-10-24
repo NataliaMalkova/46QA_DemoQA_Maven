@@ -5,17 +5,15 @@ import org.testng.annotations.BeforeMethod;
 
 public class TestBase {
 
-
     protected final ApplicationManager app = new ApplicationManager();
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         app.init();
     }
 
-    @AfterMethod(enabled = false)
+    @AfterMethod(enabled = true)
     public void tearDown() {
         app.stop();
     }
-
 }

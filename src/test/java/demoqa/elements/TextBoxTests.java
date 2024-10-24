@@ -20,15 +20,17 @@ public class TextBoxTests extends TestBase {
     @Test
     public void keyboardEventTest() throws AWTException {
         new TextBoxPage(app.driver)
-                .enterPersonalData("Name", "email@gmail.com","Germany, Berlin")
+                .enterPersonalData("Name", "email@gmail.com", "Germany, Berlin")
                 .keyboardEvent()
                 .verifyCopyPasteAddress()
         ;
     }
+
+
     @Test(dataProvider = "addNewUserFormFromCSVFile", dataProviderClass = DataProviders.class)
     public void keyboardEventDataProviderTest(String name, String email, String address) throws AWTException {
         new TextBoxPage(app.driver)
-                .enterPersonalData("Name", "email@gmail.com","Germany, Berlin")
+                .enterPersonalData(name, email, address)
                 .keyboardEvent()
                 .verifyCopyPasteAddress()
         ;

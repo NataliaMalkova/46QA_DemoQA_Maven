@@ -13,18 +13,22 @@ public class AutoCompleteTests extends TestBase {
         new HomePage(app.driver).getWidgets().hideAds();
         new SidePage(app.driver).selectAutoCompleteMenu().hideAds();
     }
+
     @Test
-    public void autoCompleteSingleTest1() {
+    public void autoCompleteSingleTest(){
         new AutoCompletePage(app.driver)
                 .autoComplete("m")
-                .verifyAutocomplete("Magenta");
+                .verifyAutocomplete("Magenta")
+        ;
     }
+
     @Test
-    public void autoCompleteArrayTest1() {
-        String[] autoCompleteArray = {"m", "b"};
-        String[] autoCompleteArrayVerify = {"Magenta", "Black", "Blue"};
+    public void autoCompleteArrayTest(){
+        String[] autoCompleteArray = {"m","b","b"};
+        String[] autoCompleteArrayVerify = {"Magenta","Black", "Blue"};
         new AutoCompletePage(app.driver)
                 .autoCompleteArray(autoCompleteArray)
-                .verifyautoCompleteArray(autoCompleteArrayVerify);
+                .verifyAutocompleteArray(autoCompleteArrayVerify)
+        ;
     }
 }

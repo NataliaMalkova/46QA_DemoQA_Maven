@@ -23,4 +23,16 @@ public class DataProviders {
         reader.close();
         return list.iterator();
     }
+    @DataProvider(name = "registrationData")
+    public Iterator<Object[]> RegistrationsTestsFromCSVFile() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/user.csv"));
+        String line = reader.readLine();
+        while (line != null) {
+            list.add(line.split(","));
+            line = reader.readLine();
+        }
+        reader.close();
+        return list.iterator();
+    }
 }

@@ -75,6 +75,7 @@ public class SidePage extends BasePage {
         return new PracticeFormPage(driver);
     }
 
+    //* Auto Complete
     @FindBy(xpath = "//span[.='Auto Complete']")
     WebElement autoCompleteMenu;
 
@@ -82,8 +83,10 @@ public class SidePage extends BasePage {
         click(autoCompleteMenu);
         return new AutoCompletePage(driver);
     }
-@FindBy (xpath = "//span[.='Broken Links - Images']")
-WebElement brokenLinksImages;
+
+    //* Broken Links - Images
+    @FindBy(xpath = "//span[.='Broken Links - Images']")
+    WebElement brokenLinksImages;
 
     public BrokenLinksImagesPage selectBrokenLinksImages() {
         click(brokenLinksImages);

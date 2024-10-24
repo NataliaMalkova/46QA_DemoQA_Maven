@@ -18,7 +18,6 @@ public class AutoCompletePage extends BasePage {
         autoCompleteMultipleInput.sendKeys(letter);
         autoCompleteMultipleInput.sendKeys(Keys.DOWN, Keys.ENTER);
         return this;
-
     }
 
     @FindBy(id = "autoCompleteMultipleContainer")
@@ -30,15 +29,15 @@ public class AutoCompletePage extends BasePage {
     }
 
     public AutoCompletePage autoCompleteArray(String[] letters) {
-        for (String letter : letters) {
+        for(String letter : letters){
             autoCompleteMultipleInput.sendKeys(letter);
             autoCompleteMultipleInput.sendKeys(Keys.DOWN, Keys.ENTER);
         }
         return this;
     }
 
-    public AutoCompletePage verifyautoCompleteArray(String[] colors) {
-        for (String color : colors) {
+    public AutoCompletePage verifyAutocompleteArray(String[] colors) {
+        for(String color : colors){
             shouldHaveText(autoCompleteMultipleContainer, color, 5000);
         }
         return this;
